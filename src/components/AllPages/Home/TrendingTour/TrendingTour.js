@@ -21,7 +21,7 @@ const TrendingTour = () => {
                     </div></div>
                 )}
                 <div className="  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-8 ">
-                    {tourlist.slice(0,4).map(tour => (
+                    {tourlist.slice(0,6).map(tour => (
                         // <TrendingTourCard tour={tour} key={tour._id}></TrendingTourCard>
                         <TrendingTourCard tour={tour} key={tour._id}></TrendingTourCard>
                     ))}
