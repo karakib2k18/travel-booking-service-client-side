@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Tour = () => {
+const AllOrders = () => {
     return (
         <div>
-            <h1>Tours</h1>
+            AllOrders
         </div>
     );
 };
 
-export default Tour;
+export default AllOrders;

@@ -11,8 +11,7 @@ const navigation = [
   { name: "Home", to: "/home", current: false },
   { name: "Tour", to: "/tour", current: false },
   { name: "Destination", to: "/destination", current: false },
-  { name: "Blogs", to: "/blog", current: false },
-  { name: "Contact", to: "/contact", current: false },
+  { name: "Blogs", to: "/blogs", current: false },
 ];
 
 function classNames(...classes) {
@@ -138,31 +137,15 @@ const Navbar = () => {
                       </NavLink>
                     )}
                   </div>
-                  <Menu as="div" className="ml-3 relative">
+                  <Menu as="div" className="hidden lg:block ml-3 relative">
                     <div>
-                      <Menu.Button className="bg-gray-800 flex text-lg rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
-                        <span className="sr-only">Open user menu</span>
-                        {/* {
-                          <img
-                            className="h-8 w-8 rounded-full"
-                            src={user.photoURL}
-                            alt=""
-                          />
-                        } */}
-                        {user.photoURL && (
-                          <img
-                            className="h-8 w-8 rounded-full"
-                            src={user.photoURL}
-                            alt=""
-                          />
-                        )}
-                        {!user.photoURL && (
-                          <img
-                            className="h-8 w-8 rounded-full"
-                            src={logo}
-                            alt=""
-                          />
-                        )}
+                      <Menu.Button className="text-white hover:bg-purple-900 hover:text-white px-3 pt-2 py-3 rounded-md text-lg font-medium">
+                        <span className="sr-only">Open Dashboard</span>
+                        <div>
+                          {(user?.displayName || user.email) && (
+<h1>Dashboard</h1>
+                          )}
+                        </div>
                       </Menu.Button>
                     </div>
                     <Transition
@@ -178,6 +161,90 @@ const Navbar = () => {
                         <Menu.Item>
                           {({ active }) => (
                             <NavLink
+                              to="/myorders"
+                              className={classNames(
+                                active ? "bg-gray-100" : "",
+                                "block px-4 py-2 text-lg text-gray-900"
+                              )}
+                            >
+                              Your Orders
+                            </NavLink>
+                          )}
+                        </Menu.Item>
+                        <Menu.Item>
+                          {({ active }) => (
+                            <NavLink
+                              to="/allorders"
+                              className={classNames(
+                                active ? "bg-gray-100" : "",
+                                "block px-4 py-2 text-lg text-gray-900"
+                              )}
+                            >All Orders
+                            </NavLink>
+                          )}
+                        </Menu.Item>
+                        <Menu.Item>
+                          {({ active }) => (
+                            <NavLink
+                              to="/addtourplace"
+                              className={classNames(
+                                active ? "bg-gray-100" : "",
+                                "block px-4 py-2 text-lg text-gray-900"
+                              )}
+                            >
+                              Add a new Place
+                            </NavLink>
+                          )}
+                        </Menu.Item>
+                     
+                      </Menu.Items>
+                    </Transition>
+                  </Menu>
+                  <Menu as="div" className="ml-3 relative">
+                    <div>
+                      <Menu.Button className="bg-gray-800 flex text-lg rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+                        <span className="sr-only">Open user menu</span>
+                        {/* {
+                          <img
+                            className="h-8 w-8 rounded-full"
+                            src={user.photoURL}
+                            alt=""
+                          />
+                        } */}
+                        <div>
+                          {user.photoURL && (
+                            <img
+                              className="h-8 w-8 rounded-full"
+                              src={user.photoURL}
+                              alt=""
+                            />
+                          )}
+                        </div>
+                        <div>
+                          {" "}
+                          {!user.photoURL && (
+                            <img
+                              className="h-8 w-8 rounded-full block lg:hidden"
+                              src={logo}
+                              alt=""
+                            />
+                          )}
+                        </div>
+                      </Menu.Button>
+                    </div>
+                    <Transition
+                      as={Fragment}
+                      enter="transition ease-out duration-100"
+                      enterFrom="transform opacity-0 scale-95"
+                      enterTo="transform opacity-100 scale-100"
+                      leave="transition ease-in duration-75"
+                      leaveFrom="transform opacity-100 scale-100"
+                      leaveTo="transform opacity-0 scale-95"
+                    >
+                      <Menu.Items className="block lg:hidden origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                        <Menu.Item>
+                          {({ active }) => (
+                            <NavLink
                               to="/"
                               className={classNames(
                                 active ? "bg-gray-100" : "",
@@ -188,22 +255,21 @@ const Navbar = () => {
                             </NavLink>
                           )}
                         </Menu.Item>
-                        <Menu.Item>
+                        {/* <Menu.Item>
                           {({ active }) => (
                             <NavLink
-                            to="/"
-                            className={classNames(
-                              active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-lg text-gray-900"
-                            )}
-                          >
-                            Settings
-                          </NavLink>
+                              to="/"
+                              className={classNames(
+                                active ? "bg-gray-100" : "",
+                                "block px-4 py-2 text-lg text-gray-900"
+                              )}
+                            >
+                              Settings
+                            </NavLink>
                           )}
-                        </Menu.Item>
+                        </Menu.Item> */}
                         <Menu.Item>
                           {({ active }) => (
- 
                             <div className="block lg:hidden">
                               {user?.displayName || user.email ? (
                                 <p
@@ -249,6 +315,44 @@ const Navbar = () => {
                                 </NavLink>
                               )}
                             </div>
+                          )}
+                        </Menu.Item>
+                        <Menu.Item>
+                          {({ active }) => (
+                            <NavLink
+                              to="/myorders"
+                              className={classNames(
+                                active ? "bg-gray-100" : "",
+                                "block px-4 py-2 text-lg text-gray-900"
+                              )}
+                            >
+                              Your Orders
+                            </NavLink>
+                          )}
+                        </Menu.Item>
+                        <Menu.Item>
+                          {({ active }) => (
+                            <NavLink
+                              to="/allorders"
+                              className={classNames(
+                                active ? "bg-gray-100" : "",
+                                "block px-4 py-2 text-lg text-gray-900"
+                              )}
+                            >All Orders
+                            </NavLink>
+                          )}
+                        </Menu.Item>
+                        <Menu.Item>
+                          {({ active }) => (
+                            <NavLink
+                              to="/addtourplace"
+                              className={classNames(
+                                active ? "bg-gray-100" : "",
+                                "block px-4 py-2 text-lg text-gray-900"
+                              )}
+                            >
+                              Add a new Place
+                            </NavLink>
                           )}
                         </Menu.Item>
                       </Menu.Items>

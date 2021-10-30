@@ -5,17 +5,19 @@ import HomePage from "./components/AllPages/Home/HomePage/HomePage";
 import NotFoundPage from "./components/NotFoundPage/NotFoundPage";
 import LogIn from "./components/HooksForm/LogInSignUp/LogIn";
 import SignUp from "./components/HooksForm/LogInSignUp/SignUp";
-import Blog from "./components/AllPages/Blog/Blog";
-import Destinaton from "./components/AllPages/Destinaton/Destinaton";
-import Contact from "./components/AllPages/Contact/Contact";
 import Navbar from "./components/Shared/Navbar/Navbar";
 import Footer from "./components/Shared/Footer/Footer";
 import AuthProvider from "./Contexts/AuthProvider";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
-import TourDetails from "./components/AllPages/Tour/TourDetails";
-import BookingDetails from "./components/HooksForm/BookingDetails/BookingDetails";
-import Tour from "./components/AllPages/Tour/Tour";
-import AddTourPlace from "./components/AddTourPlace/AddTourPlace";
+import AddTourPlace from "./components/Dashboard/AddTourPlace/AddTourPlace";
+import TrendingTourCardDetails from "./components/AllPages/Home/TrendingTour/TrendingTourCardDetails";
+import BookingTour from "./components/HooksForm/BookingTour/BookingTour";
+import MyOrders from "./components/Dashboard/AddTourPlace/MyOrders/MyOrders";
+import AllOrders from "./components/Dashboard/AllOrders/AllOrders";
+import Destinaton from "./components/AllPages/Destinaton/Destinaton";
+import Blogs from "./components/AllPages/Blogs/Blogs";
+import BlogDetails from "./components/AllPages/Blogs/BlogDetails/BlogDetails";
+import AllTrendingTour from "./components/AllPages/Home/TrendingTour/AllTrendingTour";
 
 function App() {
   return (
@@ -30,26 +32,32 @@ function App() {
             <Route path="/home">
               <HomePage></HomePage>
             </Route>
-            <Route path="/blog">
-              <Blog></Blog>
-            </Route>
             <Route path="/destination">
               <Destinaton />
             </Route>
-            <Route path="/tour">
-              <Tour />
+            <Route exact path="/tour">
+              <AllTrendingTour />
             </Route>
-            <Route path="/contact">
-              <Contact />
+            <PrivateRoute path="/tour/:tourId">
+              <TrendingTourCardDetails />
+            </PrivateRoute>
+            <Route exact path="/blogs">
+              <Blogs />
             </Route>
-            <PrivateRoute path="/AddTourPlace">
+            <PrivateRoute path="/blogs/:blogsId">
+              <BlogDetails />
+            </PrivateRoute>
+            <PrivateRoute path="/addtourplace">
               <AddTourPlace />
             </PrivateRoute>
-            <PrivateRoute path="/tourdetails">
-              <TourDetails />
+            <PrivateRoute path="/myorders">
+              <MyOrders />
             </PrivateRoute>
-            <PrivateRoute path="/bookingdetails">
-              <BookingDetails />
+            <PrivateRoute path="/allorders">
+              <AllOrders />
+            </PrivateRoute>
+            <PrivateRoute path="/bookingtour">
+              <BookingTour />
             </PrivateRoute>
             <Route path="/login">
               <LogIn></LogIn>

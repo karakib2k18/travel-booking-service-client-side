@@ -16,8 +16,9 @@ const AddTourPlace = () => {
             .then((willDelete) => {
                 if (willDelete) {
                     console.log(data)
-                    swal("You have Added a New appointment!", "Well Done!",  {
+                    swal("You have Added a New Place", "Well Done!",  {
                         icon: "success",
+                        timer: 1300
                     });
                     reset();
                 }
