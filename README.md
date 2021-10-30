@@ -1,9 +1,6 @@
-# Getting Started with TURO Travel services related App
+# Getting Started with TURO Travel services related App [ click here to see live demo](https://turo-a24f7.web.app/)
 
-This project was created with 
-# using TailwindCss, React, React-Hook-form, firebase, react router, node, express, mongodb etc.
-
-[ click here to see live demo](https://turo-a24f7.web.app/).
+### This project was created with  using TailwindCss, React, React-Hook-form, firebase, react router, node, express, mongodb etc.
 
 ## This website details and benifit is bellow:
 
