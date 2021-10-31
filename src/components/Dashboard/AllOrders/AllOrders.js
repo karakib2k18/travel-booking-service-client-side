@@ -127,10 +127,10 @@ const handleDeleteButton = (id) =>{
                         {/* <Link href="#" className="text-indigo-600 hover:text-indigo-900">
                           Edit
                         </Link> */}
-                      </td>
                       <button onClick={()=>handleDeleteButton(allBooking._id)} className=" mt-2 bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">
                         Cancel
                       </button>
+                      </td>
                     </tr>
                   ))}
                 </tbody>
