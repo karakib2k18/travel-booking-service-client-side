@@ -137,7 +137,7 @@ const Navbar = () => {
                       </NavLink>
                     )}
                   </div>
-                  <Menu as="div" className="hidden lg:block ml-3 relative">
+                  <Menu as="div" className="hidden lg:block ml-3 relative z-40">
                     <div>
                       <Menu.Button className="text-white hover:bg-purple-900 hover:text-white px-3 pt-2 py-3 rounded-md text-lg font-medium">
                         <span className="sr-only">Open Dashboard</span>
@@ -161,13 +161,13 @@ const Navbar = () => {
                         <Menu.Item>
                           {({ active }) => (
                             <NavLink
-                              to="/myorders"
+                              to="/mybooking"
                               className={classNames(
                                 active ? "bg-gray-100" : "",
                                 "block px-4 py-2 text-lg text-gray-900"
                               )}
                             >
-                              Your Orders
+                              My Booking
                             </NavLink>
                           )}
                         </Menu.Item>
@@ -179,7 +179,7 @@ const Navbar = () => {
                                 active ? "bg-gray-100" : "",
                                 "block px-4 py-2 text-lg text-gray-900"
                               )}
-                            >All Orders
+                            >All Bookings
                             </NavLink>
                           )}
                         </Menu.Item>
@@ -200,7 +200,7 @@ const Navbar = () => {
                       </Menu.Items>
                     </Transition>
                   </Menu>
-                  <Menu as="div" className="ml-3 relative">
+                  <Menu as="div" className="ml-3 relative z-40">
                     <div>
                       <Menu.Button className="bg-gray-800 flex text-lg rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                         <span className="sr-only">Open user menu</span>
@@ -320,13 +320,13 @@ const Navbar = () => {
                         <Menu.Item>
                           {({ active }) => (
                             <NavLink
-                              to="/myorders"
+                              to="/mybooking"
                               className={classNames(
                                 active ? "bg-gray-100" : "",
                                 "block px-4 py-2 text-lg text-gray-900"
                               )}
                             >
-                              Your Orders
+                              My Orders
                             </NavLink>
                           )}
                         </Menu.Item>

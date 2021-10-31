@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import swal from "sweetalert";
 import UseAuth from "../../../../Hooks/UseAuth";
 
 const TrendingTourCardDetails = () => {
   const { user } = UseAuth();
-  console.log(user);
+  // console.log(user);
   const { tourId } = useParams();
   const [singleTour, setSingleTour] = useState({});
   useEffect(() => {
-    fetch("/tourdata.json")
+    fetch("http://localhost:5000/tourist_place")
       .then((res) => res.json())
       .then((data) => {
         setSingleTour(data);
@@ -38,20 +37,37 @@ const TrendingTourCardDetails = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    swal({
-      title: "Do you want Purchase?",
-      icon: "warning",
-      buttons: true,
-      dangerMode: true,
-    }).then((willDelete) => {
-      if (willDelete) {
-        console.log(data);
-        swal("You have Successfully Booked A Slot!", "Well Done!", {
-          icon: "success",
-        });
-        reset();
-      }
-    });
+    data.userphotoURL = user.photoURL;
+    data.status = 'Pending';
+    console.log(data)
+      swal({
+        title: "Do you want Place Order?",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      }).then((willDelete) => {
+
+        fetch("http://localhost:5000/booking",{
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        })
+          .then((resp) => resp.json())
+          .then((res) => {
+           if(res.insertedId){
+            if (willDelete) {
+              swal("You have Successfully Booked A Place!", "Well Done!", {
+                icon: "success",
+                timer: 1400
+              });
+              reset();
+            }
+           }
+          });
+      });
+
   };
 
   return (
@@ -66,7 +82,7 @@ const TrendingTourCardDetails = () => {
                 alt="img is loading"
               />
             </div>
-            <div className="uppercase tracking-wide  text-indigo-600 font-semibold text-xl lg:text-3xl">
+            <div className="uppercase tracking-wide  text-indigo-600 font-semibold text-xl lg:text-3xl mt-8">
               Title: {title}
             </div>
             <p className="text-xl font-medium text-gray-900 poppins">
@@ -91,20 +107,12 @@ const TrendingTourCardDetails = () => {
               </span>
             </p>
 
-            <Link to="/appointment">
-              <button
-                className="inline-block px-1 py-2 font-semibold text-white rounded-lg bg-gradient-to-br from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-700  lg:px-8 mt-3"
-                type="submit"
-              >
-                Book Now!
-              </button>
-            </Link>
           </div>
           <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 lg:w-4/12 mx-auto">
             <div className="max-w-md w-full space-y-8">
               <div>
                 <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-                  Book a Tourist Place
+                  BOOK NOW
                 </h2>
               </div>
               <form
@@ -161,16 +169,18 @@ const TrendingTourCardDetails = () => {
                     <label htmlFor="title-tour" className="sr-only">
                       Title
                     </label>
-                    <input
-                      id="title-tour"
-                      name="title"
-                      type="text"
-                      className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                      defaultValue={title}
-                      {...register("title")}
-                      placeholder="Tour Title"
-                      required
-                    />
+                    {title && (
+                      <input
+                        id="title-tour"
+                        name="title"
+                        type="text"
+                        className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                        defaultValue={title}
+                        {...register("title")}
+                        placeholder="Tour Title"
+                        required
+                      />
+                    )}
                   </div>
                 </div>
                 <div className="rounded-md shadow-sm -space-y-px">
@@ -178,16 +188,18 @@ const TrendingTourCardDetails = () => {
                     <label htmlFor="country-destination" className="sr-only">
                       Country-Destination
                     </label>
-                    <input
-                      id="country-destination"
-                      name="country-destination"
-                      type="text"
-                      defaultValue={destinationcountry}
-                      className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                      {...register("countrydestination")}
-                      placeholder="Country-Destination"
-                      required
-                    />
+                    {destinationcountry && (
+                      <input
+                        id="country-destination"
+                        name="country-destination"
+                        type="text"
+                        defaultValue={destinationcountry}
+                        className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                        {...register("countrydestination")}
+                        placeholder="Country-Destination"
+                        required
+                      />
+                    )}
                   </div>
                 </div>
                 <div className="rounded-md shadow-sm -space-y-px">
@@ -195,16 +207,18 @@ const TrendingTourCardDetails = () => {
                     <label htmlFor="price" className="sr-only">
                       price
                     </label>
-                    <input
-                      id="price"
-                      name="price"
-                      type="number"
-                      className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                      {...register("price")}
-                      defaultValue={price}
-                      placeholder="Price"
-                      required
-                    />
+                    {price && (
+                      <input
+                        id="price"
+                        name="price"
+                        type="number"
+                        className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                        {...register("price")}
+                        defaultValue={price}
+                        placeholder="Price"
+                        required
+                      />
+                    )}
                   </div>
                 </div>
                 <div className="rounded-md shadow-sm -space-y-px">
@@ -212,16 +226,18 @@ const TrendingTourCardDetails = () => {
                     <label htmlFor="location" className="sr-only">
                       location
                     </label>
-                    <input
-                      id="location"
-                      name="location"
-                      type="text"
-                      defaultValue={location}
-                      className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                      {...register("location")}
-                      placeholder="Place location"
-                      required
-                    />
+                    {location && (
+                      <input
+                        id="location"
+                        name="location"
+                        type="text"
+                        defaultValue={location}
+                        className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                        {...register("location")}
+                        placeholder="Place location"
+                        required
+                      />
+                    )}
                   </div>
                 </div>
                 <div className="rounded-md shadow-sm -space-y-px">
@@ -229,16 +245,18 @@ const TrendingTourCardDetails = () => {
                     <label htmlFor="group-size" className="sr-only">
                       group-size
                     </label>
-                    <input
-                      id="group-size"
-                      name="group-size"
-                      type="number"
-                      defaultValue={groupsize}
-                      className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                      {...register("groupsize")}
-                      placeholder="Group Size"
-                      required
-                    />
+                    {groupsize && (
+                      <input
+                        id="group-size"
+                        name="group-size"
+                        type="number"
+                        defaultValue={groupsize}
+                        className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                        {...register("groupsize")}
+                        placeholder="Group Size"
+                        required
+                      />
+                    )}
                   </div>
                 </div>
 

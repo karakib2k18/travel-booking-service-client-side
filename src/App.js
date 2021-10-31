@@ -12,12 +12,12 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import AddTourPlace from "./components/Dashboard/AddTourPlace/AddTourPlace";
 import TrendingTourCardDetails from "./components/AllPages/Home/TrendingTour/TrendingTourCardDetails";
 import BookingTour from "./components/HooksForm/BookingTour/BookingTour";
-import MyOrders from "./components/Dashboard/AddTourPlace/MyOrders/MyOrders";
 import AllOrders from "./components/Dashboard/AllOrders/AllOrders";
 import Destinaton from "./components/AllPages/Destinaton/Destinaton";
 import Blogs from "./components/AllPages/Blogs/Blogs";
 import BlogDetails from "./components/AllPages/Blogs/BlogDetails/BlogDetails";
 import AllTrendingTour from "./components/AllPages/Home/TrendingTour/AllTrendingTour";
+import MyOrders from "./components/Dashboard/AddTourPlace/MyOrders/MyOrders";
 
 function App() {
   return (
@@ -50,7 +50,7 @@ function App() {
             <PrivateRoute path="/addtourplace">
               <AddTourPlace />
             </PrivateRoute>
-            <PrivateRoute path="/myorders">
+            <PrivateRoute path="/mybooking">
               <MyOrders />
             </PrivateRoute>
             <PrivateRoute path="/allorders">

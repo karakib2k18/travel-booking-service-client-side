@@ -6,7 +6,7 @@ const BlogDetails = () => {
     const { blogsId } = useParams();
     const [singleBlogs, setSingleBlogs] = useState({});
     useEffect(() => {
-        fetch('/blogs.json')
+        fetch('http://localhost:5000/tour_blog')
             .then(res => res.json())
             .then(data => {
                 setSingleBlogs(data)
@@ -16,18 +16,18 @@ const BlogDetails = () => {
             });
 
     }, [blogsId])
-    const {  img, title, description,country } = singleBlogs;
+    const {  img, title, description , country } = singleBlogs;
     return (
         <>
-            <div className="mx-auto lg:p-5 my-20 bg-white rounded-xl shadow-xl overflow-hidden w-4/6 ">
-                <div className="md:flex">
-                    <div className="md:flex-shrink-0">
-                        <img className="transform transition duration-700 hover:scale-110  h-64 w-full object-cover md:h-80 md:w-80" src={img} alt="img is loading" />
+            <div className="mx-auto lg:p-5 my-20 bg-white rounded-xl shadow-xl overflow-hidden w-11/12 lg:w-5/6 ">
+            <div className="md:flex-shrink-0">
+                        <img className="transform transition duration-700 hover:scale-110  h-full w-full object-cover md:h-80 " src={img} alt="img is loading" />
                     </div>
-                    <div className="p-8">
+                <div className="md:flex">
+                    <div className="py-8 px-3">
                         <div className="uppercase tracking-wide  text-gray-900 font-semibold lg:text-2xl">{country}</div>
                         <div className="uppercase tracking-wide  text-gray-900 font-semibold lg:text-2xl">Title: {title}</div>
-                        <p className="mt-2 text-xl text-gray-800">Description: {description}</p>
+                        <p className="mt-2 text-xl text-gray-800">Description : {description }</p>
                         <Link to='/tour'><button className="inline-block px-2 py-2 font-semibold text-white rounded-lg bg-gradient-to-br from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-700  lg:px-8 mt-3" type="submit">
                             See Our Tour Package
                         </button></Link>

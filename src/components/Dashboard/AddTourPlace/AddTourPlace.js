@@ -1,29 +1,47 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useHistory } from 'react-router';
 import swal from 'sweetalert';
 // import UseAuth from '../../Hooks/UseAuth';
 
 const AddTourPlace = () => {
     // const { user } = UseAuth();
     const { register, handleSubmit,reset, formState: { errors } } = useForm();
-    const onSubmit = data => {
-        swal({
+    const history = useHistory();
+    const onSubmit = (data) => {
+        console.log(data)
+          swal({
             title: "Do you want to add a new place?",
             icon: "warning",
             buttons: true,
             dangerMode: true,
-        })
-            .then((willDelete) => {
+          }).then((willDelete) => {
+    
+            fetch("http://localhost:5000/tourist_place",{
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(data),
+            })
+              .then((resp) => resp.json())
+              .then((res) => {
+               if(res.insertedId){
                 if (willDelete) {
-                    console.log(data)
-                    swal("You have Added a New Place", "Well Done!",  {
-                        icon: "success",
-                        timer: 1300
-                    });
-                    reset();
+                  console.log(data);
+                  swal("You have Added a New Place", "Well Done!",  {
+                    icon: "success",
+                    timer: 1300
+                  });
+                  reset();
+                  history.push('/home')
                 }
-            });
-    };
+
+               }
+              });
+          });
+    
+      };
 
     return (
         <div>
@@ -59,17 +77,17 @@ const AddTourPlace = () => {
                                 <label htmlFor="image" className="sr-only">
                                 image
                                 </label>
+
                                 <input
                                     id="image"
-                                    name="image"
-                                    type="text"
-
+                                    name="img"
+  
                                     className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                                    {...register("image", { required: true })}
+                                    {...register("img", { required: true })}
                                     placeholder="Image-link"
 
                                 />
-                                {errors.image && <span className="text-red-500 text-sm italic">This Field is required </span>}
+                                {errors.img && <span className="text-red-500 text-sm italic">This Field is required </span>}
                             </div>
                         </div>
                         <div className="rounded-md shadow-sm -space-y-px">
@@ -146,6 +164,24 @@ const AddTourPlace = () => {
                         </div>
                         <div className="rounded-md shadow-sm -space-y-px">
                             <div>
+                                <label htmlFor="total-days" className="sr-only">
+                                total-days
+                                </label>
+                                <input
+                                    id="total-days"
+                                    name="total-days"
+                                    type="number"
+
+                                    className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                                    {...register("days", { required: true })}
+                                    placeholder="Total-Days"
+
+                                />
+                                {errors.days && <span className="text-red-500 text-sm italic">Group Size is required </span>}
+                            </div>
+                        </div>
+                        <div className="rounded-md shadow-sm -space-y-px">
+                            <div>
                                 <label htmlFor="place-details" className="sr-only">
                                 place-details
                                 </label>
@@ -155,11 +191,11 @@ const AddTourPlace = () => {
                                     type="text"
                                     cols="30" rows="10"
                                     className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                                    {...register("placedetails", { required: true })}
+                                    {...register("description", { required: true })}
                                     placeholder="Place-details"
 
                                 />
-                                {errors.placedetails && <span className="text-red-500 text-sm italic">Place-details is required </span>}
+                                {errors.description && <span className="text-red-500 text-sm italic">Place-details is required </span>}
                             </div>
                         </div>
 

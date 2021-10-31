@@ -5,11 +5,12 @@ import { Link } from 'react-router-dom';
 import { LockClosedIcon } from '@heroicons/react/solid'
 import swal from 'sweetalert';
 import UseAuth from '../../../Hooks/UseAuth';
+import HomePage from '../../AllPages/Home/HomePage/HomePage';
 
 const SignUp = () => {
     // const [name, setName] = useState('');
     // const [error, setError] = useState('');
-    const { handleSignInWithGoogle, handleCreateUserWithEmailPassword } = UseAuth();
+    const { handleSignInWithGoogle, handleCreateUserWithEmailPassword, user } = UseAuth();
     const { register, handleSubmit, formState: { errors } } = useForm();
     const history = useHistory();
     const location = useLocation();
@@ -59,7 +60,8 @@ const SignUp = () => {
 
     return (
         <div>
-            <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 lg:w-2/6 mx-auto">
+            
+            { !user ?   <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 lg:w-2/6 mx-auto">
                 <div className="max-w-md w-full space-y-8">
                     <div>
  
@@ -109,11 +111,6 @@ const SignUp = () => {
                                 </Link>
                             </div>
 
-                            {/* <div className="text-sm">
-                                <button onClick={handleResetPassword} className="font-medium text-indigo-600 hover:text-indigo-500">
-                                    Forgot your password?
-                                </button>
-                            </div> */}
                         </div>
 
                         <div>
@@ -133,14 +130,13 @@ const SignUp = () => {
                         onClick={loginFinalWithGmail}
                         className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
                     >
-                        {/* <span className="absolute left-0 inset-y-0 flex items-center pl-3">
-                            <LockClosedIcon className="h-5 w-5 text-purple-500 group-hover:text-purple-400" aria-hidden="true" />
-                        </span> */}
                         Login With Google
                     </button>
 
                 </div>
-            </div>
+                </div> : <HomePage></HomePage>
+            }
+
         </div>
 
     );

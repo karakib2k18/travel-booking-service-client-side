@@ -6,7 +6,7 @@ const AllTrendingTour = () => {
     const [tourlist, setTourlist] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
-        fetch('./tourdata.json')
+        fetch('http://localhost:5000/tourist_place')
             .then(response => response.json())
             .then(json => {
                 setTourlist(json);

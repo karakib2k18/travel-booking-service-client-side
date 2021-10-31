@@ -5,7 +5,7 @@ const TrendingTour = () => {
     const [tourlist, setTourlist] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
-        fetch('./tourdata.json')
+        fetch('http://localhost:5000/tourist_place')
             .then(response => response.json())
             .then(json => {
                 setTourlist(json);
@@ -21,7 +21,7 @@ const TrendingTour = () => {
                     </div></div>
                 )}
                 <div className="  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-8 ">
-                    {tourlist.slice(0,6).map(tour => (
+                    {tourlist.map(tour => (
                         // <TrendingTourCard tour={tour} key={tour._id}></TrendingTourCard>
                         <TrendingTourCard tour={tour} key={tour._id}></TrendingTourCard>
                     ))}

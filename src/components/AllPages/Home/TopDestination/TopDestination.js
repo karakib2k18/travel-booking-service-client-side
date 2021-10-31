@@ -5,7 +5,7 @@ const TopDestination = () => {
   const [tourlist, setTourlist] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    fetch("./tourdata.json")
+    fetch("http://localhost:5000/tourist_place")
       .then((response) => response.json())
       .then((json) => {
         setTourlist(json);
@@ -25,7 +25,7 @@ const TopDestination = () => {
                     </div></div>
                 )}
             {tourlist.slice(0, 4).map(tour => (
-           <DestinatonCard tour={tour}></DestinatonCard>
+           <DestinatonCard tour={tour} key={tour._id}></DestinatonCard>
             ))}
           </div>
         </div>

@@ -16,7 +16,7 @@ const BlogCard = ({ blog }) => {
                 <div className="flex flex-col space-y-3">
 
                     <h1 className="text-2xl font-semibold text-gray-900 poppins">Title: {title.slice(0, 20)}</h1>
-                    <p className="text-xl font-medium text-gray-900 poppins">Description: {description.slice(0, 80)}</p>
+                    <p className="text-xl font-medium text-gray-900 poppins">Description: {description.slice(0, 150)}</p>
                     <Link to={url}><button className="inline-block px-2 py-2 font-semibold text-white rounded-lg bg-gradient-to-br from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-700 lg:px-8" type="submit">
                         See More+
                     </button></Link>
