@@ -21,13 +21,13 @@ const AllOrders = () => {
   }
 
   const onSubmit = (data) => {
-    console.log(data.status);
+    // console.log(data.status);
     let updateStatus;
     updateStatus = {...userUpdate}
     updateStatus.status = data.status;
     setUserUpdate(updateStatus);
     console.log(updateStatus);
-    const url = `https://ghastly-monster-29562.herokuapp.com/booking/${userUpdate._id}`;
+    const url = `https://ghastly-monster-29562.herokuapp.com/booking/${data._id}`;
     fetch(url, {
         method: 'PUT',
         headers: {
@@ -86,7 +86,6 @@ const AllOrders = () => {
     });
   };
 
-  // const {email,name,userphotoURL,status,title,department, _id} =allBookings
   return (
     <div>
       <h1 className="mt-3 mb-3 text-4xl font-bold text-center pt-3 text-gray-900">
