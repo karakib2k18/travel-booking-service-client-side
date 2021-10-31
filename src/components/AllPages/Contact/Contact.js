@@ -24,7 +24,7 @@ const Contact = () => {
                             <textarea placeholder="Message*" className="w-full h-32 bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"></textarea>
                         </div>
                         <div className="my-2 w-1/2 lg:w-1/4">
-                            <button className="uppercase text-sm font-bold tracking-wide  p-3 rounded-lg w-full text-white bg-gradient-to-br from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-700 lg:px-2 focus:outline-none focus:shadow-outline">
+                            <button className="uppercase text-sm font-bold tracking-wide  p-3 rounded-lg w-full text-white bg-gradient-to-br from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-700 lg:px-2 focus:outline-none focus:shadow-outline">
                                 Send Message
                             </button>
                         </div>

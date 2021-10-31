@@ -9,7 +9,7 @@ const Footer = () => {
           <div className="max-w-7xl mx-auto py-12 lg:px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
             <h2 className="text-2xl font-extrabold tracking-tight text-gray-900 lg:text-4xl">
               <span className="block mb-4">Ready to Travel Today?</span>
-              <span className="block text-indigo-600">
+              <span className="block text-purple-600">
                 Discount 50% Offfor only first tour.
               </span>
             </h2>
@@ -18,7 +18,7 @@ const Footer = () => {
                 <div className="inline-flex rounded-md shadow">
                   <Link
                     to="/tour"
-                    className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
+                    className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700"
                   >
                     Get started
                   </Link>
@@ -26,7 +26,7 @@ const Footer = () => {
                 <div className="ml-3 inline-flex rounded-md shadow">
                   <Link
                     to="/blogs"
-                    className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50"
+                    className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-purple-600 bg-white hover:bg-purple-50"
                   >
                     Read Blogs
                   </Link>

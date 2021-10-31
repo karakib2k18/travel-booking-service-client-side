@@ -24,7 +24,7 @@ const Navbar = () => {
     <>
       <Disclosure
         as="nav"
-        className="py-2 font-semibold text-white bg-gradient-to-br from-indigo-600 to-indigo-700  lg:px-8 "
+        className="py-2 font-semibold text-white bg-gradient-to-br from-purple-700 to-purple-800  lg:px-8 "
       >
         {({ open }) => (
           <>
@@ -76,7 +76,7 @@ const Navbar = () => {
                             item.current
                               ? "bg-gray-900 text-white"
                               : "text-white hover:bg-purple-900 hover:text-white",
-                            "px-3 pt-2 py-3 rounded-md text-lg font-medium"
+                            "px-3 pt-2 py-3 rounded-md text-xl font-bold"
                           )}
                           aria-current={item.current ? "page" : undefined}
                         >
@@ -101,7 +101,7 @@ const Navbar = () => {
                       <button
                         onClick={handleSignOut}
                         className={classNames(
-                          "block px-4 py-2 rounded-md text-lg font-medium text-white  hover:bg-purple-900 hover:text-white"
+                          "block px-4 py-2 rounded-md text-xl font-bold text-white  hover:bg-purple-900 hover:text-white"
                         )}
                       >
                         LogOut
@@ -110,7 +110,7 @@ const Navbar = () => {
                       <NavLink
                         to="/signup"
                         className={classNames(
-                          "block px-4 py-2 rounded-md text-lg font-medium text-white  hover:bg-purple-900 hover:text-white"
+                          "block px-4 py-2 rounded-md text-xl font-bold text-white  hover:bg-purple-900 hover:text-white"
                         )}
                       >
                         SignUp
@@ -121,7 +121,7 @@ const Navbar = () => {
                     {user?.displayName || user.email ? (
                       <p
                         className={classNames(
-                          "block px-4 py-2 rounded-md text-lg font-medium text-white  hover:bg-purple-900 hover:text-white hidden lg:block"
+                          "block px-4 py-2 rounded-md text-xl font-bold text-white  hover:bg-purple-900 hover:text-white hidden lg:block"
                         )}
                       >
                         {user.displayName || user.email}
@@ -130,7 +130,7 @@ const Navbar = () => {
                       <NavLink
                         to="/login"
                         className={classNames(
-                          "block px-4 py-2 rounded-md text-lg font-medium text-white  hover:bg-purple-900 hover:text-white"
+                          "block px-4 py-2 rounded-md text-xl font-bold text-white  hover:bg-purple-900 hover:text-white"
                         )}
                       >
                         LogIn
@@ -143,7 +143,7 @@ const Navbar = () => {
                         <span className="sr-only">Open Dashboard</span>
                         <div>
                           {(user?.displayName || user.email) && (
-<h1>Dashboard</h1>
+                            <h1>Dashboard</h1>
                           )}
                         </div>
                       </Menu.Button>
@@ -179,7 +179,8 @@ const Navbar = () => {
                                 active ? "bg-gray-100" : "",
                                 "block px-4 py-2 text-lg text-gray-900"
                               )}
-                            >All Bookings
+                            >
+                              All Bookings
                             </NavLink>
                           )}
                         </Menu.Item>
@@ -196,7 +197,6 @@ const Navbar = () => {
                             </NavLink>
                           )}
                         </Menu.Item>
-                     
                       </Menu.Items>
                     </Transition>
                   </Menu>
@@ -338,7 +338,8 @@ const Navbar = () => {
                                 active ? "bg-gray-100" : "",
                                 "block px-4 py-2 text-lg text-gray-900"
                               )}
-                            >All Orders
+                            >
+                              All Orders
                             </NavLink>
                           )}
                         </Menu.Item>
