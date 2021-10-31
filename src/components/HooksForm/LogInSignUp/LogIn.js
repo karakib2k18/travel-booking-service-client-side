@@ -5,10 +5,9 @@ import { useHistory, useLocation } from 'react-router';
 import { LockClosedIcon } from '@heroicons/react/solid'
 import swal from 'sweetalert';
 import UseAuth from '../../../Hooks/UseAuth';
-import HomePage from '../../AllPages/Home/HomePage/HomePage';
 
 const LogIn = () => {
-    const { handleSignInWithGoogle, handleSignInWithEmailPassword, user } = UseAuth();
+    const { handleSignInWithGoogle, handleSignInWithEmailPassword } = UseAuth();
     const { register, handleSubmit, formState: { errors } } = useForm();
     const location = useLocation();
     const history = useHistory();
@@ -59,8 +58,7 @@ const LogIn = () => {
 
     return (
         <div>
-            {
-                !user ?  <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 lg:w-2/6 mx-auto">
+<div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 lg:w-2/6 mx-auto">
                 <div className="max-w-md w-full space-y-8">
                     <div>
 
@@ -141,9 +139,7 @@ const LogIn = () => {
                     </button>
 
                 </div>
-            </div> : <HomePage></HomePage>
-            }
-
+            </div> 
         </div>
     );
 };

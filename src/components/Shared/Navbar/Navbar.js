@@ -143,7 +143,7 @@ const Navbar = () => {
                         <span className="sr-only">Open Dashboard</span>
                         <div>
                           {(user?.displayName || user.email) && (
-                            <h1>Dashboard</h1>
+                            <h1 className='text-lg font-bold'>Dashboard</h1>
                           )}
                         </div>
                       </Menu.Button>
@@ -274,7 +274,7 @@ const Navbar = () => {
                               {user?.displayName || user.email ? (
                                 <p
                                   className={classNames(
-                                    "block px-4 py-2 rounded-md text-lg font-bold text-gray-900 mx-auto hover:bg-purple-900 hover:text-white"
+                                    "block px-4 py-2 rounded-md text-lg font-medium text-gray-900 mx-auto hover:bg-purple-900 hover:text-white"
                                   )}
                                 >
                                   {user.displayName || user.email}
@@ -283,7 +283,7 @@ const Navbar = () => {
                                 <NavLink
                                   to="/login"
                                   className={classNames(
-                                    "block px-4 py-2 rounded-md text-lg font-bold text-gray-900 mx-auto hover:bg-purple-900 hover:text-white"
+                                    "block px-4 py-2 rounded-md text-lg font-medium text-gray-900 mx-auto hover:bg-purple-900 hover:text-white"
                                   )}
                                 >
                                   LogIn
@@ -299,7 +299,7 @@ const Navbar = () => {
                                 <button
                                   onClick={handleSignOut}
                                   className={classNames(
-                                    "block px-4 py-2 rounded-md text-lg font-bold text-gray-900 mx-auto hover:bg-purple-900 hover:text-white"
+                                    "block px-4 py-2 rounded-md text-lg font-medium text-gray-900 mx-auto hover:bg-purple-900 hover:text-white"
                                   )}
                                 >
                                   LogOut
@@ -308,7 +308,7 @@ const Navbar = () => {
                                 <NavLink
                                   to="/signup"
                                   className={classNames(
-                                    "block px-4 py-2 rounded-md text-lg font-bold text-gray-900 mx-auto hover:bg-purple-900 hover:text-white"
+                                    "block px-4 py-2 rounded-md text-lg font-medium text-gray-900 mx-auto hover:bg-purple-900 hover:text-white"
                                   )}
                                 >
                                   SignUp

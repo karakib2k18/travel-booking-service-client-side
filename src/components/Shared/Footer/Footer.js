@@ -10,7 +10,7 @@ const Footer = () => {
             <h2 className="text-2xl font-extrabold tracking-tight text-gray-900 lg:text-4xl">
               <span className="block mb-4">Ready to Travel Today?</span>
               <span className="block text-purple-600">
-                Discount 50% Offfor only first tour.
+                Discount 50%  only first tour.
               </span>
             </h2>
             <div className="mt-8 flex lg:mt-0 lg:flex-shrink-0">

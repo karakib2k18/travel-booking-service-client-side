@@ -7,10 +7,12 @@ const MyOrders = () => {
   const [allBookings, setAllBookings] = useState([]);
 
   useEffect(() => {
-    fetch(`https://ghastly-monster-29562.herokuapp.com/booking/${user.email}`)
+    fetch(`https://ghastly-monster-29562.herokuapp.com/booking/`)
       .then((res) => res.json())
       .then((data) => {
-        setAllBookings(data);
+        console.log(data);
+        const mybooking = data.filter((dt) => dt.email === user.email);
+        setAllBookings(mybooking);
       });
   }, [user.email]);
 
@@ -122,21 +124,15 @@ const MyOrders = () => {
                         <span className="py-2 px-3 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-400 text-grey-900">
                           {allBooking.status}
                         </span>
-                        <span className="py-2 px-3 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                          Confirm
-                        </span>
                       </td>
                       {/* <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{allBooking.role}</td> */}
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                        {/* <Link href="#" className="text-indigo-600 hover:text-indigo-900">
-                          Edit
-                        </Link> */}
-                                             <button
-                        onClick={() => handleDeleteButton(allBooking._id)}
-                        className=" mt-2 bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
-                      >
-                        Cancel
-                      </button>
+                        <button
+                          onClick={() => handleDeleteButton(allBooking._id)}
+                          className=" mt-2 bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
+                        >
+                          Cancel
+                        </button>
                       </td>
                     </tr>
                   ))}

@@ -5,12 +5,11 @@ import { Link } from 'react-router-dom';
 import { LockClosedIcon } from '@heroicons/react/solid'
 import swal from 'sweetalert';
 import UseAuth from '../../../Hooks/UseAuth';
-import HomePage from '../../AllPages/Home/HomePage/HomePage';
 
 const SignUp = () => {
     // const [name, setName] = useState('');
     // const [error, setError] = useState('');
-    const { handleSignInWithGoogle, handleCreateUserWithEmailPassword, user } = UseAuth();
+    const { handleSignInWithGoogle, handleCreateUserWithEmailPassword } = UseAuth();
     const { register, handleSubmit, formState: { errors } } = useForm();
     const history = useHistory();
     const location = useLocation();
@@ -61,7 +60,7 @@ const SignUp = () => {
     return (
         <div>
             
-            { !user ?   <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 lg:w-2/6 mx-auto">
+ <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 lg:w-2/6 mx-auto">
                 <div className="max-w-md w-full space-y-8">
                     <div>
  
@@ -134,8 +133,8 @@ const SignUp = () => {
                     </button>
 
                 </div>
-                </div> : <HomePage></HomePage>
-            }
+                </div> 
+
 
         </div>
 
