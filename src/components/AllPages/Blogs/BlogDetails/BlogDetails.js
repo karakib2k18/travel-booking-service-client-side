@@ -6,7 +6,7 @@ const BlogDetails = () => {
     const { blogsId } = useParams();
     const [singleBlogs, setSingleBlogs] = useState({});
     useEffect(() => {
-        fetch('http://localhost:5000/tour_blog')
+        fetch('https://ghastly-monster-29562.herokuapp.com/tour_blog')
             .then(res => res.json())
             .then(data => {
                 setSingleBlogs(data)

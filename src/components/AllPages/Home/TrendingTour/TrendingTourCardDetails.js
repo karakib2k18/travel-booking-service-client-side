@@ -10,7 +10,7 @@ const TrendingTourCardDetails = () => {
   const { tourId } = useParams();
   const [singleTour, setSingleTour] = useState({});
   useEffect(() => {
-    fetch("http://localhost:5000/tourist_place")
+    fetch("https://ghastly-monster-29562.herokuapp.com/tourist_place")
       .then((res) => res.json())
       .then((data) => {
         setSingleTour(data);
@@ -47,7 +47,7 @@ const TrendingTourCardDetails = () => {
         dangerMode: true,
       }).then((willDelete) => {
 
-        fetch("http://localhost:5000/booking",{
+        fetch("https://ghastly-monster-29562.herokuapp.com/booking",{
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

@@ -5,7 +5,7 @@ const TrendingTour = () => {
     const [tourlist, setTourlist] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
-        fetch('http://localhost:5000/tourist_place')
+        fetch('https://ghastly-monster-29562.herokuapp.com/tourist_place')
             .then(response => response.json())
             .then(json => {
                 setTourlist(json);
@@ -14,7 +14,7 @@ const TrendingTour = () => {
     }, []);
     return (
         <div>
-            <h1 className="mt-3 mb-3 text-4xl font-bold text-center pt-3 text-gray-900">Trending Tours Package</h1>
+            <h1 className="mt-6 mb-3 text-4xl font-bold text-center pt-3 text-gray-900">Trending Tours Package</h1>
             <div className="max-w-screen-xl mx-auto ">
                 {isLoading && (
                     <div>  <div className=" flex justify-center items-center"> <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-purple-500"></div>

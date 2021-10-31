@@ -6,7 +6,7 @@ const Destinaton = () => {
   const [tourlist, setTourlist] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    fetch("http://localhost:5000/tourist_place")
+    fetch("https://ghastly-monster-29562.herokuapp.com/tourist_place")
       .then((response) => response.json())
       .then((json) => {
         setTourlist(json);

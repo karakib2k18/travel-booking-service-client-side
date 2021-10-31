@@ -17,7 +17,7 @@ const AddTourPlace = () => {
             dangerMode: true,
           }).then((willDelete) => {
     
-            fetch("http://localhost:5000/tourist_place",{
+            fetch("https://ghastly-monster-29562.herokuapp.com/tourist_place",{
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json'

@@ -5,7 +5,7 @@ const Blogs = () => {
     const [blogslist, setBlogslist] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
-        fetch('http://localhost:5000/tour_blog')
+        fetch('https://ghastly-monster-29562.herokuapp.com/tour_blog')
             .then(response => response.json())
             .then(json => {
                 setBlogslist(json);

@@ -7,7 +7,7 @@ const AllOrders = () => {
   const [allBookings, setAllBookings] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/booking")
+    fetch("https://ghastly-monster-29562.herokuapp.com/booking")
       .then((res) => res.json())
       .then((data) => {
         setAllBookings(data);
@@ -22,7 +22,7 @@ const handleDeleteButton = (id) =>{
       dangerMode: true,
     }).then((willDelete) => {
 
-      fetch(`http://localhost:5000/booking/${id}`,{
+      fetch(`https://ghastly-monster-29562.herokuapp.com/booking/${id}`,{
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
