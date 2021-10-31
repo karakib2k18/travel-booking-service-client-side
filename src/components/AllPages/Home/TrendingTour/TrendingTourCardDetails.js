@@ -46,7 +46,7 @@ const TrendingTourCardDetails = () => {
         buttons: true,
         dangerMode: true,
       }).then((willDelete) => {
-
+        if (willDelete) {
         fetch("https://ghastly-monster-29562.herokuapp.com/booking",{
           method: 'POST',
           headers: {
@@ -57,15 +57,15 @@ const TrendingTourCardDetails = () => {
           .then((resp) => resp.json())
           .then((res) => {
            if(res.insertedId){
-            if (willDelete) {
+
               swal("You have Successfully Booked A Place!", "Well Done!", {
                 icon: "success",
                 timer: 1400
               });
               reset();
             }
-           }
           });
+          }
       });
 
   };

@@ -23,6 +23,7 @@ const MyOrders = () => {
       buttons: true,
       dangerMode: true,
     }).then((willDelete) => {
+      if (willDelete) {
       fetch(`https://ghastly-monster-29562.herokuapp.com/booking/${id}`, {
         method: "DELETE",
         headers: {
@@ -36,15 +37,14 @@ const MyOrders = () => {
               (booking) => booking._id !== id
             );
             setAllBookings(remaining);
-            if (willDelete) {
               console.log(data);
               swal("You have Successfully Cancel Booking!", "Well Done!", {
                 icon: "success",
                 timer: 1200,
               });
             }
-          }
-        });
+          });
+        }
     });
   };
 
