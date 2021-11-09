@@ -1,53 +1,24 @@
 import React, { useEffect, useState } from "react";
-import swal from "sweetalert";
+// import swal from "sweetalert";
 import UseAuth from "../../../../Hooks/UseAuth";
+import AllOrdersTable from "../../AllOrders/AllOrdersTable";
 
 const MyOrders = () => {
   const { user } = UseAuth();
   const [allBookings, setAllBookings] = useState([]);
 
   useEffect(() => {
-    fetch(`https://ghastly-monster-29562.herokuapp.com/booking/`)
+    fetch(`https://ghastly-monster-29562.herokuapp.com/booking`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        // setAllBookings(data);
         const mybooking = data.filter((dt) => dt.email === user.email);
         setAllBookings(mybooking);
       });
   }, [user.email]);
 
-  const handleDeleteButton = (id) => {
-    swal({
-      title: "Do you want delete?",
-      icon: "warning",
-      buttons: true,
-      dangerMode: true,
-    }).then((willDelete) => {
-      if (willDelete) {
-      fetch(`https://ghastly-monster-29562.herokuapp.com/booking/${id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.deletedCount) {
-            const remaining = allBookings.filter(
-              (booking) => booking._id !== id
-            );
-            setAllBookings(remaining);
-              console.log(data);
-              swal("You have Successfully Cancel Booking!", "Well Done!", {
-                icon: "success",
-                timer: 1200,
-              });
-            }
-          });
-        }
-    });
-  };
-
+ 
   // const {email,name,userphotoURL,status,title,department, _id} =allBookings
   return (
     <div>
@@ -91,50 +62,11 @@ const MyOrders = () => {
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                  {allBookings.map((allBooking) => (
-                    <tr key={allBooking._id}>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="flex items-center">
-                          <div className="flex-shrink-0 h-10 w-10">
-                            <img
-                              className="h-10 w-10 rounded-full"
-                              src={allBooking.userphotoURL}
-                              alt=""
-                            />
-                          </div>
-                          <div className="ml-4">
-                            <div className="text-sm font-medium text-gray-900">
-                              {allBooking.name}
-                            </div>
-                            <div className="text-sm text-gray-500">
-                              {allBooking.email}
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm text-gray-900">
-                          {allBooking.title}
-                        </div>
-                        <div className="text-sm text-gray-500">
-                          {allBooking.department}
-                        </div>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <span className="py-2 px-3 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-400 text-grey-900">
-                          {allBooking.status}
-                        </span>
-                      </td>
-                      {/* <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{allBooking.role}</td> */}
-                      <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                        <button
-                          onClick={() => handleDeleteButton(allBooking._id)}
-                          className=" mt-2 bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
-                        >
-                          Cancel
-                        </button>
-                      </td>
-                    </tr>
+                {allBookings.map((allBooking) => (
+                    <AllOrdersTable
+                      allBooking={allBooking}
+                      key={allBooking._id}
+                    ></AllOrdersTable>
                   ))}
                 </tbody>
               </table>
