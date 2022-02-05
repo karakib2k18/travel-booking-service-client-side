@@ -4,7 +4,8 @@ import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { NavLink } from "react-router-dom";
-import logo from "./../../../logo1.png";
+import logo from "./../../../logo.png";
+// import logo1 from "./../../../logo1.png";
 import UseAuth from "../../../Hooks/UseAuth";
 
 const navigation = [
@@ -24,7 +25,10 @@ const Navbar = () => {
     <>
       <Disclosure
         as="nav"
-        className="py-2 font-semibold text-white bg-gradient-to-br from-purple-700 to-purple-800  lg:px-8 "
+        className="py-2 font-semibold  lg:px-8"
+        style={{ backgroundColor: "#white" }}
+        // style={{ backgroundColor: "#d5d9e4" }}
+        // style={{ backgroundColor: "#2e3a3c"}}
       >
         {({ open }) => (
           <>
@@ -32,7 +36,7 @@ const Navbar = () => {
               <div className="relative flex items-center justify-between h-16">
                 <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                   {/* Mobile menu button*/}
-                  <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                  <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-black hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                     <span className="sr-only">Open main menu</span>
                     {open ? (
                       <XIcon className="block h-6 w-6" aria-hidden="true" />
@@ -45,7 +49,7 @@ const Navbar = () => {
                   <div className="flex-shrink flex items-center md:text-start">
                     {/* <NavLink
                                     to="/home"
-                                    className={classNames('block px-4 py-2 rounded-md text-lg font-medium text-white ')}
+                                    className={classNames('block px-4 py-2 rounded-md text-lg font-medium text-black ')}
                                 >
                                 TURO
                                 </NavLink> */}
@@ -62,7 +66,7 @@ const Navbar = () => {
                   </div>
                   {/* <NavLink
                                     to="/home"
-                                    className={classNames('block px-4 py-2 rounded-md text-lg font-medium text-white ')}
+                                    className={classNames('block px-4 py-2 rounded-md text-lg font-medium text-black ')}
                                 >
                                 TURO
                                 </NavLink> */}
@@ -74,8 +78,8 @@ const Navbar = () => {
                           to={item.to}
                           className={classNames(
                             item.current
-                              ? "bg-gray-900 text-white"
-                              : "text-white hover:bg-purple-900 hover:text-white",
+                              ? "bg-gray-900 text-black"
+                              : "text-black hover:bg-purple-900 hover:text-white",
                             "px-3 pt-2 py-3 rounded-md text-xl font-bold"
                           )}
                           aria-current={item.current ? "page" : undefined}
@@ -101,7 +105,7 @@ const Navbar = () => {
                       <button
                         onClick={handleSignOut}
                         className={classNames(
-                          "block px-4 py-2 rounded-md text-xl font-bold text-white  hover:bg-purple-900 hover:text-white"
+                          "block px-4 py-2 rounded-md text-xl font-bold text-black  hover:bg-purple-900 hover:text-white"
                         )}
                       >
                         LogOut
@@ -110,7 +114,7 @@ const Navbar = () => {
                       <NavLink
                         to="/signup"
                         className={classNames(
-                          "block px-4 py-2 rounded-md text-xl font-bold text-white  hover:bg-purple-900 hover:text-white"
+                          "block px-4 py-2 rounded-md text-xl font-bold text-black  hover:bg-purple-900 hover:text-white"
                         )}
                       >
                         SignUp
@@ -121,7 +125,7 @@ const Navbar = () => {
                     {user?.displayName || user.email ? (
                       <p
                         className={classNames(
-                          "block px-4 py-2 rounded-md text-xl font-bold text-white  hover:bg-purple-900 hover:text-white hidden lg:block"
+                          "block px-4 py-2 rounded-md text-xl font-bold text-black  hover:bg-purple-900 hover:text-white hidden lg:block"
                         )}
                       >
                         {user.displayName || user.email}
@@ -130,7 +134,7 @@ const Navbar = () => {
                       <NavLink
                         to="/login"
                         className={classNames(
-                          "block px-4 py-2 rounded-md text-xl font-bold text-white  hover:bg-purple-900 hover:text-white"
+                          "block px-4 py-2 rounded-md text-xl font-bold text-black  hover:bg-purple-900 hover:text-white"
                         )}
                       >
                         LogIn
@@ -139,11 +143,11 @@ const Navbar = () => {
                   </div>
                   <Menu as="div" className="hidden lg:block ml-3 relative z-40">
                     <div>
-                      <Menu.Button className="text-white hover:bg-purple-900 hover:text-white px-3 pt-2 py-3 rounded-md text-lg font-medium">
+                      <Menu.Button className="text-black hover:bg-purple-900 hover:text-white px-3 pt-2 py-3 rounded-md text-lg font-medium">
                         <span className="sr-only">Open Dashboard</span>
                         <div>
                           {(user?.displayName || user.email) && (
-                            <h1 className='text-lg font-bold'>Dashboard</h1>
+                            <h1 className="text-lg font-bold">Dashboard</h1>
                           )}
                         </div>
                       </Menu.Button>
@@ -371,8 +375,8 @@ const Navbar = () => {
                     to={item.to}
                     className={classNames(
                       item.current
-                        ? "bg-gray-900 text-white"
-                        : "text-white hover:bg-purple-900 hover:text-white",
+                        ? "bg-gray-900 text-black"
+                        : "text-black hover:bg-purple-900 hover:text-white",
                       "block px-3 py-2 rounded-md text-base font-medium"
                     )}
                     aria-current={item.current ? "page" : undefined}
