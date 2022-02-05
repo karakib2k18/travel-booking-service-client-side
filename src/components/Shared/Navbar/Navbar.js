@@ -26,7 +26,7 @@ const Navbar = () => {
       <Disclosure
         as="nav"
         className="py-2 font-semibold  lg:px-8"
-        style={{ backgroundColor: "#white" }}
+        style={{ backgroundColor: "#eaeef2" }}
         // style={{ backgroundColor: "#d5d9e4" }}
         // style={{ backgroundColor: "#2e3a3c"}}
       >
